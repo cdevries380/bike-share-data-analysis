@@ -1,8 +1,5 @@
 # Cyclistic Bike-Share — Capstone Case Study
 
-**Author:** Collin R. DeVries  
-**Project:** Google Data Analytics Professional Certificate — Capstone  
-**Repo:** cyclistic-bike-share-capstone
 
 ---
 
