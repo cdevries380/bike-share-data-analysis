@@ -1,0 +1,107 @@
+# Cyclistic Bike-Share — Capstone Case Study
+
+**Author:** Collin R. DeVries  
+**Project:** Google Data Analytics Professional Certificate — Capstone  
+**Repo:** cyclistic-bike-share-capstone
+
+---
+
+## Project Overview
+This project analyzes 12 months of Cyclistic bike-share data to understand behavioral differences between **casual riders** and **annual members**. The analysis identifies key trends in ride frequency, trip duration, and station usage, with the goal of generating actionable insights to support marketing strategies aimed at increasing membership conversions. Insights are presented alongside visualizations and recommendations for targeted campaigns.
+
+---
+
+## Background / Business Problem
+Cyclistic is a bike-share program in Chicago offering affordable and sustainable transportation. Users are classified as **casual riders** (pay-per-ride or short-term passes) or **annual members** (long-term subscription).  
+
+The marketing team believes converting casual riders into annual members is critical for growth. The goal of this project is to analyze historical ride data, identify behavioral patterns, and generate actionable insights to increase membership conversions.
+
+---
+
+## Scenario
+As a data analyst on Cyclistic’s marketing analytics team, my task was to design a data-driven marketing campaign targeting casual riders. Using historical ride data, I explored usage patterns and provided insights to guide promotional strategies aligned with rider behavior.
+
+---
+
+## Ask
+**Business Task:** Identify differences between casual riders and members and recommend strategies to convert casual riders into annual members.
+
+**Key Stakeholders:**
+- Cyclistic Marketing Team (Director of Marketing)  
+- Executive Team  
+- Product and Operations Teams (for strategy implementation)
+
+---
+
+## Prepare
+- Accessed 12 months of historical ride data (four quarterly CSV files, 2019).  
+- Reviewed dataset structure, consistency, and completeness:
+  - Column consistency across quarters  
+  - Proper data types (timestamps, text, numbers)  
+  - Null/missing values, duplicates, and outliers
+
+---
+
+## Process
+
+### Set up workspace
+- Tools: **BigQuery** and **Google Sheets** for processing and visualizations.
+
+### Import Data
+- Uploaded each CSV to BigQuery.  
+- Standardized column names across quarters (quarter 2 had inconsistent naming and duplicates).  
+- Merged all quarters using `UNION ALL` in SQL.
+
+### Review and Correct Errors
+- Confirmed column names and orders matched  
+- Removed duplicates and trips over 24 hours  
+- Checked for nulls (none found)  
+- Standardized text fields (e.g., "Subscriber" → "subscriber")  
+- Verified data types for trip IDs, timestamps, and categorical fields
+
+---
+
+## Analyze
+
+### Weekly Ride Patterns: Customers vs. Subscribers
+- Aggregated ride counts by day of week using SQL:  
+  - Subscribers: peak usage Mon–Fri (weekday commuting)  
+  - Customers: peak usage Sat–Sun (leisure/recreational)  
+**Visuals:**  
+- `images/nonsubscriber_rides_by_weekday.png`  
+- `images/subscriber_rides_by_day.png`  
+
+---
+
+### Trip Duration Comparison: Customers vs. Subscribers
+- Calculated average trip duration in minutes for each group:  
+  - Subscribers: ~12.43 minutes per ride  
+  - Customers: ~35.27 minutes per ride  
+**Interpretation:** Members make short utilitarian trips; casual riders take longer rides (sightseeing/leisure).  
+**Visual:** `images/avg_trip_duration.png`
+
+---
+
+### Ride Trends by Station: Tourist vs. Non-Tourist
+- Retrieved top 10 stations for both user types and classified by proximity to tourist attractions:  
+  - Casual riders: Streeter Dr & Grand Ave, Millennium Park, Lake Shore Dr & Monroe St  
+  - Members: Clinton St & Washington Blvd, Canal St & Adams St  
+**Interpretation:** Casual riders favor tourist locations; members favor practical commuter locations.  
+**Visuals:**  
+- `images/casual_top_stations.png`  
+- `images/member_top_stations.png`
+
+---
+
+## Recommendations
+1. **Targeted Weekend Passes**  
+   - Create weekend-specific passes or bundle deals for casual riders  
+   - Highlight membership value for frequent weekend use  
+
+2. **Promote Membership for Short-Trip Convenience**  
+   - Emphasize that membership is ideal for short daily trips  
+   - Offer limited-time discounts or “first week free” promotions  
+
+3. **Deploy Marketing at Tourist Hotspots**  
+   - Place kiosks/ads at high-traffic tourist stations  
+   - Introduce weekend/visitor-friendly passes with an upsell path to membership
