@@ -1,6 +1,5 @@
 # Cyclistic Bike-Share — Capstone Case Study
 
-
 ---
 
 ## Project Overview
@@ -9,7 +8,7 @@ This project analyzes 12 months of Cyclistic bike-share data to understand behav
 ---
 
 ## Background / Business Problem
-Cyclistic is a bike-share program in Chicago offering affordable and sustainable transportation. Users are classified as **casual riders** (pay-per-ride or short-term passes) or **annual members** (long-term subscription).  
+Cyclistic is a bike-share program in Chicago offering affordable and sustainable transportation. Users are classified as **casual riders** (pay-per-ride or short-term passes) and **annual members** (long-term subscription).
 
 The marketing team believes converting casual riders into annual members is critical for growth. The goal of this project is to analyze historical ride data, identify behavioral patterns, and generate actionable insights to increase membership conversions.
 
@@ -31,7 +30,7 @@ As a data analyst on Cyclistic’s marketing analytics team, my task was to desi
 ---
 
 ## Prepare
-- Accessed 12 months of historical ride data (four quarterly CSV files, 2019).  
+- Accessed 12 months of historical ride data (four quarterly CSV files, 2019).
 - Reviewed dataset structure, consistency, and completeness:
   - Column consistency across quarters  
   - Proper data types (timestamps, text, numbers)  
@@ -42,55 +41,59 @@ As a data analyst on Cyclistic’s marketing analytics team, my task was to desi
 ## Process
 
 ### Set up workspace
-- Tools: **BigQuery** and **Google Sheets** for processing and visualizations.
+- Tools used: **BigQuery** and **Google Sheets** for processing and visualizations.
 
 ### Import Data
-- Uploaded each CSV to BigQuery.  
-- Standardized column names across quarters (quarter 2 had inconsistent naming and duplicates).  
+- Uploaded each CSV to BigQuery.
+- Standardized column names across quarters (Quarter 2 required adjustments).
 - Merged all quarters using `UNION ALL` in SQL.
 
 ### Review and Correct Errors
 - Confirmed column names and orders matched  
 - Removed duplicates and trips over 24 hours  
 - Checked for nulls (none found)  
-- Standardized text fields (e.g., "Subscriber" → "subscriber")  
-- Verified data types for trip IDs, timestamps, and categorical fields
+- Standardized text fields (e.g., “Subscriber” → “subscriber”)  
+- Verified data types for trip IDs, timestamps, and category fields
 
 ---
 
 ## Analyze
 
 ### Weekly Ride Patterns: Customers vs. Subscribers
-- Aggregated ride counts by day of week using SQL:  
-  - Subscribers: peak usage Mon–Fri (weekday commuting)  
-  - Customers: peak usage Sat–Sun (leisure/recreational)  
+- Aggregated ride counts by day of week:
+  - **Subscribers:** peak usage Monday–Friday (weekday commute behavior)
+  - **Casual riders:** peak usage Saturday–Sunday (leisure behavior)
+
 **Visuals:**  
-- `images/nonsubscriber_rides_by_weekday.png`  
-- `images/subscriber_rides_by_day.png`  
+![Non-subscriber rides by weekday](images/nonsubscriber_rides_by_weekday.png)  
+![Subscriber rides by weekday](images/subscriber_rides_by_day.png)
 
 ---
 
 ### Trip Duration Comparison: Customers vs. Subscribers
-- Calculated average trip duration in minutes for each group:  
-  - Subscribers: ~12.43 minutes per ride  
-  - Customers: ~35.27 minutes per ride  
-**Interpretation:** Members make short utilitarian trips; casual riders take longer rides (sightseeing/leisure).  
-**Visual:** `images/avg_trip_duration.png`
+- Calculated average trip duration:
+  - **Members:** ~12.43 minutes per ride  
+  - **Casual riders:** ~35.27 minutes per ride  
+
+**Interpretation:**  
+Members make shorter utilitarian trips; casual riders tend to take longer leisure rides.
+
+**Visual:**  
+![Average trip duration](images/avg_trip_duration.png)
 
 ---
 
 ### Ride Trends by Station: Tourist vs. Non-Tourist
-- Retrieved top 10 stations for both user types and classified by proximity to tourist attractions:  
-  - Casual riders: Streeter Dr & Grand Ave, Millennium Park, Lake Shore Dr & Monroe St  
-  - Members: Clinton St & Washington Blvd, Canal St & Adams St  
-**Interpretation:** Casual riders favor tourist locations; members favor practical commuter locations.  
+- Top stations analyzed and compared to known tourist locations in Chicago.
+
 **Visuals:**  
-- `images/casual_top_stations.png`  
-- `images/member_top_stations.png`
+![Casual rider top stations](images/casual_top_stations.png)  
+![Member top stations](images/member_top_stations.png)
 
 ---
 
 ## Recommendations
+
 1. **Targeted Weekend Passes**  
    - Create weekend-specific passes or bundle deals for casual riders  
    - Highlight membership value for frequent weekend use  
@@ -101,4 +104,4 @@ As a data analyst on Cyclistic’s marketing analytics team, my task was to desi
 
 3. **Deploy Marketing at Tourist Hotspots**  
    - Place kiosks/ads at high-traffic tourist stations  
-   - Introduce weekend/visitor-friendly passes with an upsell path to membership
+   - Introduce weekend/visitor-friendly passes with a clear upsell path to membership
