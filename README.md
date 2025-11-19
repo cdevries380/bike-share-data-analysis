@@ -5,6 +5,8 @@
 ## Project Overview
 This project analyzes 12 months of Cyclistic bike-share data to understand behavioral differences between **casual riders** and **annual members**. The analysis identifies key trends in ride frequency, trip duration, and station usage, with the goal of generating actionable insights to support marketing strategies aimed at increasing membership conversions. Insights are presented alongside visualizations and recommendations for targeted campaigns.
 
+I used the latest dataset from the company, covering all four quarters, to analyze ride-share patterns throughout the year. Because the dataset contained millions of rows, I leveraged BigQuery to clean, standardize, and merge the data for analysis. The trickiest part of this project was merging the data together, as I had 4 quarters of data; however, Q2 had different column names, but had the same exact data. I used the UNION ALL function to merge all of the data together, allowing me to clean it and then properly anaylze it. 
+
 ---
 
 ## Background / Business Problem
