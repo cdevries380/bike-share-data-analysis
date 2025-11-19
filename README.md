@@ -94,7 +94,7 @@ Members make shorter utilitarian trips; casual riders tend to take longer leisur
 
 ---
 
-## Recommendations
+## Share/Act
 
 1. **Targeted Weekend Passes**  
    - Create weekend-specific passes or bundle deals for casual riders  
